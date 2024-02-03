@@ -1,0 +1,17 @@
+{% extends 'pages/dashboard.html' %}
+
+
+
+{% block dashboard_content %}
+<div class="min-h-screen flex flex-col gap-5 p-2">
+    <div class="flex justify-between border-b-2 border-gray-100 p-5">
+        <h1 class="text-lg font-bold">News - Show </h1>
+    </div>
+
+    <div class="flex flex-col gap-2">
+        <h1>{{news.title}}</h1>
+        <p>{{news.content}}</p>
+    </div>
+
+</div>
+{% endblock dashboard_content %}

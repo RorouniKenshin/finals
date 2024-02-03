@@ -1,0 +1,75 @@
+{% extends 'pages/dashboard.html' %}
+
+
+
+{% block dashboard_content %}
+<div class="min-h-screen flex flex-col gap-2 p-2">
+    <div class="relative overflow-x-auto">
+        <h1 class="text-lg text-blue-600 font-bold">Reservation ({{ total_reservations }})</h1>
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-200">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        name
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Email
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Schedule Date
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        No. Person
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        No. Cottage
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Message
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for reservation in reservations %}
+                <tr class="border-b">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                        {{ reservation.name }}
+                    </th>
+                    <td class="px-6 py-4">
+                        {{ reservation.email }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ reservation.date }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ reservation.total_person }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ reservation.total_cottage}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ reservation.message}}
+                    </td>
+                    <td class="px-6 py-4">
+                        <div class="flex gap-2">
+                            <a href="{% url 'reservation_show' reservation.id %}" class="text-blue-500 text-sm capitalize">
+                                view
+                            </a>
+                            <a href="{% url 'reservation_delete' reservation.id %}" class="text-red-600 text-sm capitalize">
+                                delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock dashboard_content %}

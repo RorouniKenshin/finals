@@ -1,0 +1,71 @@
+{% extends 'pages/dashboard.html' %}
+
+
+
+{% block dashboard_content %}
+<div class="min-h-screen flex flex-col gap-2 p-2">
+    <div class="relative overflow-x-auto">
+        <div class="flex justify-between items-center p-2">
+            <h1 class="text-lg text-blue-600 font-bold"> News ({{ total_news }})</h1>
+            <a href="{% url 'new_create' %}" class="py-2 px-4 rounded-lg bg-blue-500 text-white font-bold">
+                Add
+            </a>
+        </div>
+     
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-200">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        title
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                       content
+                    </th>
+                    <!-- <th scope="col" class="px-6 py-3">
+                        Schedule Date
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        No. Person
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        No. Cottage
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Message
+                    </th> -->
+                    <th scope="col" class="px-6 py-3">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for new in news %}
+                 <tr class="border-b">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                        {{ new.title }}
+                    </th>
+                    <td class="px-6 py-4">
+                        {{ new.content }}
+                    </td>
+                        {{ reservation.message}}
+                    </td>
+                    <td class="px-6 py-4">
+                        <div class="flex gap-2">
+                            <a href="{% url 'new_show' new.id %}" class="text-blue-500 text-sm capitalize">
+                                view
+                            </a>
+                           <a href="{% url 'new_delete' new.id %}" class="text-red-600 text-sm capitalize">
+                                delete
+                            </a> 
+                        </div>
+                    </td> 
+                </tr> 
+                {% endfor %}
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock dashboard_content %}

@@ -1,0 +1,93 @@
+{% extends 'pages/dashboard.html' %}
+{% load static %}
+
+
+{% block dashboard_content %}
+<div class="h-auto w-full flex flex-col gap-2 p-5">
+    <div class="w-full grid grid-cols-2 grid-flow-row gap-5">
+        <div class="w-full p-2 bg-blue-500 rounded-lg duration-700 hover:shadow-lg flex justify-between">
+            <div class="flex items-center justify-center">
+                <img src="{% static 'images/calendar.png' %}" alt="" srcset="" class="object object-center h-16 w-16">
+            </div>
+            <div>
+                <h1 class="text-4xl font-bold tracking-widest text-gray-50">
+                    Reservation
+                </h1>
+                <p class="text text-2xl text-white font-bold tracking-widest text-end">
+                    {{total_reservations}}
+                </p>
+            </div>
+        </div>
+        <div class="w-full p-2 bg-blue-500 rounded-lg duration-700 hover:shadow-lg flex justify-between">
+            <div class="flex items-center justify-center">
+                <img src="{% static 'images/newspapers.png' %}" alt="" srcset="" class="object object-center h-16 w-16">
+            </div>
+            <div>
+                <h1 class="text-4xl font-bold tracking-widest text-gray-50">
+                    News & Event
+                </h1>
+                <p class="text text-2xl text-white font-bold tracking-widest text-end">
+                    {{ total_news }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="relative overflow-x-auto">
+        <h1 class="text-lg text-blue-600 font-bold">Reservation ({{ total_reservations }})</h1>
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-200">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        name
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Email
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Schedule Date
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        No. Person
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        No. Cottage
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Message
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for reservation in reservations %}
+                <tr class="border-b">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                        {{ reservation.name }}
+                    </th>
+                    <td class="px-6 py-4">
+                        {{ reservation.email }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ reservation.date }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ reservation.total_person }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ reservation.total_cottage}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ reservation.message}}
+                    </td>
+                </tr>
+                {% endfor %}
+
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{% endblock dashboard_content %}

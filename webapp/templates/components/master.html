@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en"  class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+
+        {% endblock title %}
+    </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- swiper js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+
+    <!-- venobox -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/venobox/2.0.8/venobox.css" integrity="sha512-DdJCxSEliAOOcwNXGOzXyBJIZ/K6KAv4OkrH46eBd7nOIbkOHoQPYrS6bbT53nsFWAYqE3/jNGGWH/3ELRgCnQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- aos transition -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+    <div class="flex flex-col min-h-screen w-full bg-blue-50">
+        {% include 'components/navbar.html' %}
+        {% block content %}
+
+        {% endblock content %}
+        {% include 'components/footer.html' %}
+    </div>
+
+    <!-- swiper js -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- venobox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/venobox/2.0.8/venobox.min.js" integrity="sha512-RwADmV7VD+jDR+1KL6kzLn6mOXVju0tQ0BnxWgXe2MYgDbeFK+ErI9MZdhX5OshfFqAX/rS5nOdfPetPLj6Nyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- aos transition -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- text animate js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+
+    <script src="{% static 'js/script.js' %}"></script>
+
+</body>
+
+</html>
